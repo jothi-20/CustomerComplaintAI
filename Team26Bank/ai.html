@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Agent - Code Quality Checker</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- PDF SCRIPT ADDED -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<style>
+
+body{
+margin:0;
+font-family:Segoe UI;
+background:url("https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=2070")
+no-repeat center center fixed;
+background-size:cover;
+}
+
+.overlay{
+background:rgba(255,255,255,0.93);
+backdrop-filter:blur(6px);
+min-height:100vh;
+padding:40px;
+position:relative;
+}
+
+.back-btn{
+display:inline-block;
+padding:10px 18px;
+background:#0f2d52;
+color:white;
+text-decoration:none;
+border-radius:8px;
+margin-bottom:20px;
+}
+
+/* DOWNLOAD BUTTON TOP RIGHT */
+.download-btn{
+position:absolute;
+top:40px;
+right:40px;
+padding:10px 18px;
+background:#0f2d52;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+.download-btn:hover{
+background:#1e3a5f;
+}
+
+.main-title{
+text-align:center;
+color:#0f2d52;
+margin-bottom:40px;
+}
+
+.section{
+background:white;
+padding:25px;
+border-radius:14px;
+margin-bottom:25px;
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+.section h3{
+color:#0f2d52;
+margin-bottom:10px;
+}
+
+ul{
+padding-left:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+<a href="index.html" class="back-btn">
+<i class="fa-solid fa-arrow-left"></i> Back
+</a>
+
+<!-- DOWNLOAD BUTTON -->
+<button onclick="downloadPDF()" class="download-btn">
+<i class="fa-solid fa-download"></i> Download PDF
+</button>
+
+<!-- PDF CONTENT WRAPPER -->
+<div id="pdfContent">
+
+<h1 class="main-title">
+<i class="fa-solid fa-robot"></i> AI Agent – Code Quality Checker
+</h1>
+
+<div class="section">
+<h3><i class="fa-solid fa-circle-info"></i> Overview</h3>
+<p>
+The Code Quality Checker AI Agent is an intelligent component integrated into the system to analyze source code against predefined quality checklists. The agent evaluates coding standards, security practices, maintainability, and performance considerations using an AI model.
+</p>
+</div>
+
+<div class="section">
+<h3><i class="fa-solid fa-bullseye"></i> Objectives</h3>
+<ul>
+<li>Ensure adherence to coding standards.</li>
+<li>Identify security vulnerabilities.</li>
+<li>Detect poor coding practices.</li>
+<li>Provide structured improvement suggestions.</li>
+<li>Support automated code review process.</li>
+</ul>
+</div>
+
+<div class="section">
+<h3><i class="fa-solid fa-layer-group"></i> Technology Stack</h3>
+<ul>
+<li>UI – React</li>
+<li>API Layer – FastAPI</li>
+<li>Database – SQLite</li>
+<li>AI Engine – LLM API Integration</li>
+</ul>
+</div>
+
+<div class="section">
+<h3><i class="fa-solid fa-diagram-project"></i> System Architecture</h3>
+<ul>
+<li>User enters source code and checklist in React UI.</li>
+<li>React sends request to FastAPI backend.</li>
+<li>FastAPI processes the request and prepares structured prompt.</li>
+<li>Prompt is sent to LLM API for evaluation.</li>
+<li>LLM analyzes code against checklist items.</li>
+<li>Structured observations are returned to FastAPI.</li>
+<li>Results are stored in SQLite database.</li>
+<li>Response is displayed back in React interface.</li>
+</ul>
+</div>
+
+<div class="section">
+<h3><i class="fa-solid fa-list-check"></i> Functional Capabilities</h3>
+<ul>
+<li>Accept source code as input.</li>
+<li>Accept checklist items as input.</li>
+<li>Evaluate each checklist item independently.</li>
+<li>Generate observation for each item.</li>
+<li>Provide compliance status (Pass / Needs Improvement).</li>
+<li>Suggest improvements where applicable.</li>
+<li>Store analysis history in database.</li>
+</ul>
+</div>
+
+<div class="section">
+<h3><i class="fa-solid fa-sliders"></i> Non-Functional Requirements</h3>
+<ul>
+<li>Fast response time.</li>
+<li>Secure API communication.</li>
+<li>Scalable backend architecture.</li>
+<li>Readable and structured output format.</li>
+<li>Lightweight database storage using SQLite.</li>
+</ul>
+</div>
+
+<div class="section">
+<h3><i class="fa-solid fa-magnifying-glass-chart"></i> AI Evaluation Logic</h3>
+<ul>
+<li>Code and checklist are sent to backend.</li>
+<li>FastAPI constructs structured prompt.</li>
+<li>LLM evaluates each checklist rule.</li>
+<li>Observations generated per rule.</li>
+<li>Status assigned for compliance.</li>
+<li>Improvement suggestions provided where needed.</li>
+</ul>
+</div>
+
+<div class="section">
+<h3><i class="fa-solid fa-database"></i> Data Storage</h3>
+<ul>
+<li>SQLite database stores analysis history.</li>
+<li>Stores code snippet reference.</li>
+<li>Stores checklist items.</li>
+<li>Stores AI observations and status.</li>
+<li>Maintains timestamp for each analysis.</li>
+</ul>
+</div>
+
+<div class="section">
+<h3><i class="fa-solid fa-shield-halved"></i> Security Considerations</h3>
+<ul>
+<li>No permanent storage of sensitive code unless required.</li>
+<li>Secure handling of API credentials.</li>
+<li>HTTPS communication between frontend and backend.</li>
+<li>Input validation at API level.</li>
+</ul>
+</div>
+
+<div class="section">
+<h3><i class="fa-solid fa-circle-check"></i> Benefits</h3>
+<ul>
+<li>Automates code review process.</li>
+<li>Reduces manual review effort.</li>
+<li>Improves overall software quality.</li>
+<li>Ensures consistency in coding practices.</li>
+<li>Provides structured and actionable feedback.</li>
+</ul>
+</div>
+
+</div>
+</div>
+
+<script>
+function downloadPDF(){
+var element = document.getElementById("pdfContent");
+var opt = {
+margin:0.5,
+filename:'AI_Agent_Code_Quality_Checker.pdf',
+image:{ type:'jpeg', quality:0.98 },
+html2canvas:{ scale:2 },
+jsPDF:{ unit:'in', format:'a4', orientation:'portrait' }
+};
+html2pdf().set(opt).from(element).save();
+}
+</script>
+
+</body>
+</html>

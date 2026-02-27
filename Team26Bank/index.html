@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Gen AI Bank</title>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:Segoe UI;
+background:url("https://images.unsplash.com/photo-1554224155-8d04cb21cd6c") no-repeat center center fixed;
+background-size:cover;
+}
+
+.overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(15,45,82,0.7);
+backdrop-filter:blur(5px);
+z-index:-1;
+}
+
+header{
+text-align:center;
+color:white;
+padding:40px;
+font-size:38px;
+font-weight:bold;
+}
+
+.container{
+display:flex;
+flex-direction:column;
+align-items:center;
+margin-top:40px;
+}
+
+.card{
+width:320px;
+margin:15px;
+padding:18px;
+border-radius:15px;
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(10px);
+color:white;
+font-size:18px;
+font-weight:600;
+cursor:pointer;
+display:flex;
+align-items:center;
+gap:15px;
+transition:0.3s;
+border:1px solid rgba(255,255,255,0.3);
+}
+
+.card i{
+font-size:26px;
+}
+
+.card:hover{
+transform:scale(1.08);
+background:#2563eb;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+<header>🏦 Gen AI Bank</header>
+
+<div class="container">
+
+<div class="card" onclick="location.href='frd.html'">
+<i class="fa-solid fa-file-lines"></i> Functional Requirements
+</div>
+
+<div class="card" onclick="location.href='architecture.html'">
+<i class="fa-solid fa-sitemap"></i> Application Architecture
+</div>
+
+<div class="card" onclick="location.href='database.html'">
+<i class="fa-solid fa-database"></i> Database Design
+</div>
+
+<div class="card" onclick="location.href='test.html'">
+<i class="fa-solid fa-vial"></i> Functional Test Scripts
+</div>
+
+<div class="card" onclick="location.href='rtm.html'">
+<i class="fa-solid fa-table-list"></i> Traceability Matrix
+</div>
+
+<div class="card" onclick="location.href='manual.html'">
+<i class="fa-solid fa-book-open"></i> User Manual
+</div>
+
+<div class="card" onclick="location.href='ai.html'">
+<i class="fa-solid fa-robot"></i> AI Code Quality Checker
+</div>
+
+</div>
+
+</body>
+</html>

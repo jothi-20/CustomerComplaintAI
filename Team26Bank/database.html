@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Database Design</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- PDF DOWNLOAD SCRIPT ADDED -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<style>
+
+body{
+margin:0;
+font-family:Segoe UI;
+background:url("https://images.unsplash.com/photo-1601597111158-2fceff292cdc?q=80&w=2070")
+no-repeat center center fixed;
+background-size:cover;
+}
+
+.overlay{
+background:rgba(255,255,255,0.90);
+backdrop-filter:blur(6px);
+min-height:100vh;
+padding:40px;
+position:relative;
+}
+
+/* Back Button */
+.back-btn{
+display:inline-block;
+margin-bottom:20px;
+padding:10px 18px;
+background:#0f2d52;
+color:white;
+text-decoration:none;
+border-radius:8px;
+font-size:14px;
+}
+
+.back-btn:hover{
+background:#163e6f;
+}
+
+/* DOWNLOAD BUTTON TOP RIGHT ADDED */
+.download-btn{
+position:absolute;
+top:40px;
+right:40px;
+padding:10px 18px;
+background:#0f2d52;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+.download-btn:hover{
+background:#163e6f;
+}
+
+/* Main Heading */
+.main-title{
+text-align:center;
+color:#0f2d52;
+margin-bottom:40px;
+}
+
+/* Section spacing */
+.section{
+margin-top:70px;
+}
+
+/* LDM Boxes */
+.ldm-box{
+display:inline-block;
+width:280px;
+margin:20px;
+padding:30px;
+background:white;
+border-radius:16px;
+text-align:center;
+border:2px solid #3b82f6;
+font-size:18px;
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+.ldm-box i{
+font-size:26px;
+color:#0f2d52;
+margin-bottom:10px;
+display:block;
+}
+
+/* Physical Table */
+.dbtable{
+width:100%;
+border-collapse:collapse;
+margin-top:20px;
+background:white;
+border-radius:12px;
+overflow:hidden;
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+.dbtable th{
+background:#0f2d52;
+color:white;
+padding:15px;
+}
+
+.dbtable td{
+padding:15px;
+border-bottom:1px solid #e5e7eb;
+}
+
+/* ER Boxes */
+.er-box{
+display:inline-block;
+padding:18px 30px;
+margin:15px;
+background:white;
+border-radius:12px;
+border:2px solid #3b82f6;
+box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+<!-- Back Button -->
+<a href="index.html" class="back-btn">
+<i class="fa-solid fa-arrow-left"></i> Back
+</a>
+
+<!-- DOWNLOAD BUTTON TOP RIGHT -->
+<button onclick="downloadPDF()" class="download-btn">
+<i class="fa-solid fa-download"></i> Download PDF
+</button>
+
+<!-- IMPORTANT ID ADDED -->
+<div id="pdfContent">
+
+<!-- Main Heading -->
+<h1 class="main-title">
+<i class="fa-solid fa-database"></i> Database Design
+</h1>
+
+<!-- LDM Section -->
+<div class="section">
+<h2>Logical Model Entities</h2>
+
+<div class="ldm-box">
+<i class="fa-solid fa-user"></i>
+Users
+</div>
+
+<div class="ldm-box">
+<i class="fa-solid fa-folder"></i>
+Cases
+</div>
+
+<div class="ldm-box">
+<i class="fa-solid fa-tags"></i>
+Tags
+</div>
+
+<div class="ldm-box">
+<i class="fa-solid fa-clock"></i>
+Follow-Ups
+</div>
+
+<div class="ldm-box">
+<i class="fa-solid fa-hourglass-half"></i>
+SLA Rules
+</div>
+
+<div class="ldm-box">
+<i class="fa-solid fa-file-lines"></i>
+Audit Logs
+</div>
+</div>
+
+<!-- Physical Section -->
+<div class="section">
+<h2>Physical Data Model</h2>
+
+<table class="dbtable">
+<tr>
+<th>Table</th>
+<th>Primary Key</th>
+<th>Foreign Keys</th>
+</tr>
+
+<tr>
+<td>users</td>
+<td>user_id</td>
+<td>role_id</td>
+</tr>
+
+<tr>
+<td>cases</td>
+<td>case_id</td>
+<td>created_by</td>
+</tr>
+
+<tr>
+<td>follow_ups</td>
+<td>followup_id</td>
+<td>case_id</td>
+</tr>
+
+<tr>
+<td>case_tags</td>
+<td>case_tag_id</td>
+<td>case_id, tag_id</td>
+</tr>
+
+<tr>
+<td>ai_logs</td>
+<td>log_id</td>
+<td>case_id</td>
+</tr>
+
+</table>
+</div>
+
+<!-- ER Section -->
+<div class="section">
+<h2>ER Diagram</h2>
+
+<div class="er-box">Users</div> ➝
+<div class="er-box">Cases</div> ➝
+<div class="er-box">FollowUps</div>
+
+<br><br>
+
+<div class="er-box">Cases</div> ➝
+<div class="er-box">Case Tags</div> ➝
+<div class="er-box">Tags</div>
+
+<br><br>
+
+<div class="er-box">Cases</div> ➝
+<div class="er-box">AI Logs</div>
+
+<ul>
+<li>Users create multiple complaint cases</li>
+<li>Each Case contains multiple follow-ups</li>
+<li>Cases are categorized using tags</li>
+<li>AI Logs store AI generated summaries</li>
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- PDF FUNCTION -->
+<script>
+
+function downloadPDF(){
+
+var element = document.getElementById("pdfContent");
+
+var opt = {
+margin:0.5,
+filename:'Database_Design.pdf',
+image:{ type:'jpeg', quality:0.98 },
+html2canvas:{ scale:2 },
+jsPDF:{ unit:'in', format:'a4', orientation:'portrait' }
+};
+
+html2pdf().set(opt).from(element).save();
+
+}
+
+</script>
+
+</body>
+</html>

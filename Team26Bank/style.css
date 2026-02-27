@@ -1,0 +1,33 @@
+body {
+font-family: Arial;
+margin: 0;
+background: #f4f6f9;
+}
+
+.header {
+background: #17375e;
+color: white;
+padding: 20px;
+text-align: center;
+}
+
+.container {
+padding: 40px;
+}
+
+.card {
+background: white;
+padding: 20px;
+margin: 15px 0;
+border-radius: 10px;
+box-shadow: 0 0 5px grey;
+}
+
+.back-btn {
+background: #17375e;
+color: white;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+}

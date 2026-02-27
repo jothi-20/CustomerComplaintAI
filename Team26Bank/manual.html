@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>End User Manual</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- PDF SCRIPT ADDED -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+<style>
+
+body{
+margin:0;
+font-family:Segoe UI;
+background:url("https://images.unsplash.com/photo-1601597111158-2fceff292cdc?q=80&w=2070")
+no-repeat center center fixed;
+background-size:cover;
+}
+
+.overlay{
+background:rgba(255,255,255,0.93);
+backdrop-filter:blur(6px);
+min-height:100vh;
+padding:40px;
+position:relative;
+}
+
+.back-btn{
+display:inline-block;
+padding:10px 18px;
+background:#0f2d52;
+color:white;
+text-decoration:none;
+border-radius:8px;
+margin-bottom:20px;
+}
+
+.back-btn:hover{
+background:#1e3a5f;
+}
+
+/* DOWNLOAD BUTTON TOP RIGHT ADDED */
+.download-top{
+position:absolute;
+top:40px;
+right:40px;
+padding:10px 18px;
+background:#0f2d52;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+}
+
+.download-top:hover{
+background:#1e3a5f;
+}
+
+.main-title{
+text-align:center;
+color:#0f2d52;
+margin-bottom:40px;
+}
+
+.section{
+background:white;
+padding:25px;
+border-radius:14px;
+margin-bottom:25px;
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+.section h3{
+color:#0f2d52;
+margin-bottom:10px;
+}
+
+.section ul{
+margin:0;
+padding-left:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="overlay">
+
+<a href="index.html" class="back-btn">
+<i class="fa-solid fa-arrow-left"></i> Back
+</a>
+
+<!-- DOWNLOAD BUTTON TOP RIGHT -->
+<button onclick="downloadPDF()" class="download-top">
+<i class="fa-solid fa-download"></i> Download PDF
+</button>
+
+<!-- IMPORTANT ID ADDED -->
+<div id="pdfContent">
+
+<h1 class="main-title">
+<i class="fa-solid fa-book"></i> End User Manual
+</h1>
+
+<div class="section">
+<h3><i class="fa-solid fa-right-to-bracket"></i> 1. Login to System</h3>
+<ul>
+<li>Enter valid username and password.</li>
+<li>Click Login to access dashboard.</li>
+<li>Invalid credentials will display error message.</li>
+</ul>
+</div>
+
+<div class="section">
+<h3><i class="fa-solid fa-file-circle-plus"></i> 2. Create New Case</h3>
+<ul>
+<li>Click "New Case".</li>
+<li>Enter Customer Reference ID.</li>
+<li>Select Interaction Type.</li>
+<li>Select Channel.</li>
+<li>Select Priority.</li>
+<li>Enter Raw Notes.</li>
+<li>Click Submit to create case.</li>
+</ul>
+</div>
+
+<div class="section">
+<h3><i class="fa-solid fa-robot"></i> 3. AI Case Note Generation</h3>
+<ul>
+<li>Click "Generate AI Note".</li>
+<li>System converts raw notes into professional format.</li>
+<li>Interaction Summary</li>
+<li>Action Taken</li>
+<li>Next Steps</li>
+</ul>
+</div>
+
+<div class="section">
+<h3><i class="fa-solid fa-pen-to-square"></i> 4. Review & Edit</h3>
+<ul>
+<li>User can edit AI generated content.</li>
+<li>Make necessary corrections if required.</li>
+<li>Save changes.</li>
+</ul>
+</div>
+
+<div class="section">
+<h3><i class="fa-solid fa-diagram-next"></i> 5. Status Workflow</h3>
+<ul>
+<li>Draft</li>
+<li>Reviewed</li>
+<li>Finalized</li>
+</ul>
+</div>
+
+<div class="section">
+<h3><i class="fa-solid fa-clock"></i> 6. SLA Tracking</h3>
+<ul>
+<li>SLA date auto-calculated based on Priority.</li>
+<li>System tracks SLA breach.</li>
+<li>Dashboard shows deadlines.</li>
+</ul>
+</div>
+
+<div class="section">
+<h3><i class="fa-solid fa-bell"></i> 7. Follow-up Management</h3>
+<ul>
+<li>Add follow-up remarks.</li>
+<li>Mark follow-up as completed.</li>
+</ul>
+</div>
+
+<div class="section">
+<h3><i class="fa-solid fa-chart-column"></i> 8. Dashboard Overview</h3>
+<ul>
+<li>Total Active Cases.</li>
+<li>Cases by Status.</li>
+<li>Cases by Priority.</li>
+<li>SLA Compliance Rate.</li>
+</ul>
+</div>
+
+<div class="section">
+<h3><i class="fa-solid fa-magnifying-glass"></i> 9. Search & Filter</h3>
+<ul>
+<li>Search by Case ID.</li>
+<li>Filter by Status, Priority, Channel.</li>
+<li>View SLA Breached cases.</li>
+</ul>
+</div>
+
+<div class="section">
+<h3><i class="fa-solid fa-clipboard-check"></i> 10. Export & Audit</h3>
+<ul>
+<li>Export finalized notes as PDF or text.</li>
+<li>Raw Notes</li>
+<li>AI Generated Notes</li>
+<li>Final Content</li>
+<li>Status Changes</li>
+<li>Timestamps</li>
+</ul>
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+function downloadPDF(){
+
+var element = document.getElementById("pdfContent");
+
+var opt = {
+margin:0.5,
+filename:'End_User_Manual.pdf',
+image:{ type:'jpeg', quality:0.98 },
+html2canvas:{ scale:2 },
+jsPDF:{ unit:'in', format:'a4', orientation:'portrait' }
+};
+
+html2pdf().set(opt).from(element).save();
+
+}
+
+</script>
+
+</body>
+</html>
